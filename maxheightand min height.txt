@@ -1,0 +1,28 @@
+public class MinMaxHeightFinder {
+    public static String findMinMaxPerson(int[] heights) {
+        if (heights == null || heights.length == 0) {
+            return "Invalid input";
+        }
+
+        int minIndex = 0;
+        int maxIndex = 0;
+
+        for (int i = 1; i < heights.length; i++) {
+            if (heights[i] < heights[minIndex]) {
+                minIndex = i;
+            }
+            if (heights[i] > heights[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+
+        // Person numbers are usually 1-based, so we add 1
+        return (minIndex ) + " " + (maxIndex );
+    }
+
+    public static void main(String[] args) {
+        int[] heights = {170, 165, 180, 160, 175}; // sample input
+        String result = findMinMaxPerson(heights);
+        System.out.println(result); // e.g., "4 3" for min at index 3 (160) and max at index 2 (180)
+    }
+}
