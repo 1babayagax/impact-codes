@@ -1,0 +1,37 @@
+public class RearrangeDigits {
+
+    // Method to rearrange digits such that even digits are on the left
+    // and odd digits are on the right
+    public static int rearrangeEvenOdd(int num) {
+        // To hold even and odd digits
+        StringBuilder evenDigits = new StringBuilder();
+        StringBuilder oddDigits = new StringBuilder();
+
+        // Process each digit
+        while (num != 0) {
+            int digit = num % 10;  // Extract the last digit
+            if (digit % 2 == 0) {
+                evenDigits.append(digit);  // Even digit
+            } else {
+                oddDigits.append(digit);  // Odd digit
+            }
+            num /= 10;  // Remove the last digit
+        }
+
+        // Combine even digits followed by odd digits
+        String resultStr = evenDigits.reverse().toString() + oddDigits.reverse().toString();
+        
+        // Convert the result string back to an integer
+        return Integer.parseInt(resultStr);
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        int[] testCases = {123456, 987654, 120, 13579};
+
+        for (int num : testCases) {
+            int result = rearrangeEvenOdd(num);
+            System.out.println("Original: " + num + " -> Result: " + result);
+        }
+    }
+}

@@ -1,0 +1,38 @@
+public class Movezero{
+    public static int movezero(int n){
+        int onecount=0;
+        int zerocount=0;
+        
+        while (n!=0){
+            if ( n%10==1){
+                onecount++;
+                 
+            }else if (n%10==0){
+                zerocount++;
+                
+            }
+            n/=10  ;  
+            
+        }
+        int result=0;
+        for (int i = 0 ; i<onecount; i++){
+            result=result*10+1;
+        }
+        
+        for (int i=0;i<zerocount;i++){
+            result=result*10;
+        }
+        return result;
+        
+    }
+    public static void main(String[] args){
+        int[] testcase={101010, 1101001};
+        for (int n : testcase){
+            int result=movezero(n);
+            System.out.println("original:"+n+"-> result:" +result);
+            
+        }
+    
+    }   
+    
+}
