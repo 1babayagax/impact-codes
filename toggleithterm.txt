@@ -1,0 +1,26 @@
+public class BitToggler {
+
+    // Toggle the i-th bit (1-based index)
+    public static int toggleIthBit(int n, int i) {
+        return n ^ (1 << (i - 1));
+    }
+
+    // Convert number to 8-bit binary string
+    public static String toBinary(int num) {
+        return String.format("%8s", Integer.toBinaryString(num)).replace(' ', '0');
+    }
+
+    public static void main(String[] args) {
+        int n = 29; // Binary: 00011101
+        int i = 4;  // Toggle the 4th bit (from right, 1-based)
+
+        int result = toggleIthBit(n, i);
+
+        System.out.println("Original (decimal): " + n);
+        System.out.println("Original (binary) : " + toBinary(n));
+        System.out.println("Toggle bit at pos : " + i);
+        System.out.println("Result   (decimal): " + result);
+        System.out.println("Result   (binary) : " + toBinary(result));
+    }
+}
+
