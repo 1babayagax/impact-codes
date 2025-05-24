@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> validChain = new ArrayList<>();
+        Set<String> usedWords = new HashSet<>();
+        String prevWord = null;
+
+        System.out.println("Enter words one by one (type #### to stop):");
+
+        while (true) {
+            String word = scanner.nextLine();
+
+            if (word.equals("####")) {
+                break;
+            }
+
+            word = word.trim().toLowerCase();
+
+            if (word.isEmpty() || usedWords.contains(word)) {
+                continue;
+            }
+
+            if (prevWord == null || word.charAt(0) == prevWord.charAt(prevWord.length() - 1)) {
+                validChain.add(word);
+                usedWords.add(word);
+                prevWord = word;
+            }
+        }
+
+        System.out.println("\nValid word chain:");
+        for (String word : validChain) {
+            System.out.println(word);
+        }
+
+        scanner.close();
+    }
+}
